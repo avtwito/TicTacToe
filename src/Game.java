@@ -1,10 +1,10 @@
 public class Game {
 
-    private HumanPlayer playerX;
-    private HumanPlayer playerO;
-    private ConsoleRenderer renderer;
+    private final Player playerX;
+    private final Player playerO;
+    private final Renderer renderer;
 
-    public Game(HumanPlayer playerX, HumanPlayer playerO, ConsoleRenderer renderer) {
+    public Game(Player playerX, Player playerO, Renderer renderer) {
         this.playerX = playerX;
         this.playerO = playerO;
         this.renderer = renderer;
@@ -12,7 +12,7 @@ public class Game {
 
     public Winner run() {
         Board board = new Board();
-        HumanPlayer[] players = {playerX, playerO};
+        Player[] players = {playerX, playerO};
         Mark[] marks = {Mark.X, Mark.O};
         int counter = 0;
         while (!board.checkIfSomebodyWon()) {

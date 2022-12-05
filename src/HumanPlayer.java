@@ -12,6 +12,7 @@ public class HumanPlayer implements Player {
      * @param board given current board
      * @param mark current player's mark
      */
+    @Override
     public void playTurn(Board board, Mark mark) {
         Scanner in = new Scanner(System.in);
         System.out.printf("Please type-in a coordinate for %s: ", mark.toString());
