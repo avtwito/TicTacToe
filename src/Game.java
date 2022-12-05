@@ -1,10 +1,10 @@
 public class Game {
 
-    private Player playerX;
-    private Player playerO;
-    private Renderer renderer;
+    private HumanPlayer playerX;
+    private HumanPlayer playerO;
+    private ConsoleRenderer renderer;
 
-    public Game(Player playerX, Player playerO, Renderer renderer) {
+    public Game(HumanPlayer playerX, HumanPlayer playerO, ConsoleRenderer renderer) {
         this.playerX = playerX;
         this.playerO = playerO;
         this.renderer = renderer;
@@ -12,7 +12,7 @@ public class Game {
 
     public Winner run() {
         Board board = new Board();
-        Player[] players = {playerX, playerO};
+        HumanPlayer[] players = {playerX, playerO};
         Mark[] marks = {Mark.X, Mark.O};
         int counter = 0;
         while (!board.checkIfSomebodyWon()) {
@@ -27,11 +27,4 @@ public class Game {
         return board.getWhoWin();
     }
 
-    public static void main(String[] args) {
-        Player playerX = new Player();
-        Player playerY = new Player();
-        Renderer renderer = new Renderer();
-        Game game = new Game(playerX, playerY, renderer);
-        System.out.println(game.run().toString());
-    }
 }
