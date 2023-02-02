@@ -51,7 +51,7 @@ public class Tournament {
         Player player1 = playerFactory.buildPlayer(player1Type);
         Player player2 = playerFactory.buildPlayer(player2Type);
         if (renderer == null || player1 == null || player2 == null) {
-            System.out.println("Not supported yet");
+            System.out.println("Not supported");
             return;
         }
 

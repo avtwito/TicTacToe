@@ -11,11 +11,10 @@ public class RendererFactory {
      * @return Renderer ConsoleRenderer/VoidRenderer
      */
     public Renderer buildFactory(String rendererRequest) {
-        switch (rendererRequest) {
-            case "console":
-                return new ConsoleRenderer();
-            default:
-                return null;
-        }
+        return switch (rendererRequest) {
+            case "console" -> new ConsoleRenderer();
+            case "none" -> new VoidRenderer();
+            default -> null;
+        };
     }
 }

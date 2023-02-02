@@ -44,10 +44,10 @@ enum Winner {
 public class Board {
 
     public static final int SIZE = 5;
-    public static final int WIN_STREAK = 4;
+    public static final int WIN_STREAK = 3;
 
 
-    private static Mark[][] board;
+    private Mark[][] board;
     private int emptySquares = SIZE * SIZE;
     private boolean didSomebodyWin = false;
     private Winner whoWin;
@@ -67,6 +67,20 @@ public class Board {
     }
 
     /**
+     * Copy constructor
+     * @param boardCopy the board we want to copy from
+     */
+    public Board(Board boardCopy) {
+        board = new Mark[SIZE][SIZE];
+        for (int row = 0; row < SIZE; row++) {
+            for (int col = 0; col < SIZE; col++) {
+                board[row][col] = boardCopy.getMark(row, col);
+            }
+        }
+        emptySquares = boardCopy.emptySquares;
+    }
+
+    /**
      * This method allows users to put a mark in (row, col) coordinate on the board
      * @param mark the mark to put in (row, col)
      * @param row row coordinate
@@ -76,9 +90,11 @@ public class Board {
     public boolean putMark(Mark mark, int row, int col){
         if (row < 0 || row >= SIZE || col < 0 || col >= SIZE)
             return false;
-        if (board[row][col] == Mark.X || board[row][col] == Mark.O)
-            return false;
         board[row][col] = mark;
+        if (mark.equals(Mark.BLANK)) {
+            emptySquares++;
+            return true;
+        }
         emptySquares--;
         if (checkWinner(mark, row, col)) {
             didSomebodyWin = true;

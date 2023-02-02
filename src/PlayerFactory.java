@@ -11,11 +11,11 @@ public class PlayerFactory {
      * @return Player CleverPlayer/WhateverPlayer/HumanPlayer
      */
     public Player buildPlayer(String playerRequest) {
-        switch (playerRequest) {
-            case "human":
-                return new HumanPlayer();
-            default:
-                return null;
-        }
+        return switch (playerRequest) {
+            case "human" -> new HumanPlayer();
+            case "whatever" -> new WhateverPlayer();
+            case "clever" -> new CleverPlayer();
+            default -> null;
+        };
     }
 }
